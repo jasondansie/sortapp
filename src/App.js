@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    search: "",
+  };
+
+  searchHandler = (event) => {
+    this.setState({ search: event.target.value })
+    console.log(event.target.value);
+  }
+
+  render() {
+    return (
+      <div>
+          <h1>Sort Algorithms</h1>
+          <div className='search'>
+            <label htmlFor="search">search</label>
+            <input type="text" name="search" onChange={this.searchHandler}></input>
+          </div>
+        </div >
+    );
+  }
 }
 
 export default App;
