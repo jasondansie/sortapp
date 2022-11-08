@@ -28,3 +28,5 @@ function bubbleSort(arr){
     // Print the array
     console.log(arr)
   }
+
+  export default bubbleSort
