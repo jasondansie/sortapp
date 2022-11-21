@@ -1,9 +1,9 @@
 function bubbleSort(arr){
    
-    var i, j;
-    var len = arr.length;
-     
-    var isSwapped = false;
+    let i, j; 
+    let  isSwapped = false;
+
+    const len = arr.length;
      
     for(i =0; i < len; i++){
        
@@ -11,22 +11,20 @@ function bubbleSort(arr){
        
       for(j = 0; j < len; j++){
           if(arr[j] > arr[j + 1]){
-            var temp = arr[j]
+            let temp = arr[j]
             arr[j] = arr[j+1];
             arr[j+1] = temp;
             isSwapped = true;
           }
       }
        
-      // IF no two elements were swapped by inner loop, then break
-       
+      // IF no two elements were swapped by inner loop, then break    
       if(!isSwapped){
         break;
       }
     }
-     
-    // Print the array
-    console.log(arr)
+
+    return arr;
   }
 
   export default bubbleSort

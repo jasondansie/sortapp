@@ -2,31 +2,35 @@ import './App.css';
 import { Component } from 'react';
 import bubbleSort from './bubbleSort';
 
-
 class App extends Component {
 
   state = {
-    message: "no numbers added.",
+    message: "",
     search: "",
-    answer: ""
   };
-  
   
   searchHandler = (event) => {
     this.setState({ search: event.target.value});
     console.log(event.target.value);
-    console.log("search: ",search);
   }
 
   clickHandler = (event) => {
     event.preventDefault();
+    let temp;
+    let results = "";
+    const array = this.state.search.split(",").map(Number); 
     
-    console.log(message);
-    var array = this.state.search.split(",").map(Number);   
-    this.setState({this.state.message}bubbleSort(array));
-    console.log("answer:", answer);
-  }
+    temp = bubbleSort(array);
 
+    temp.forEach(num => {
+      results = `${results} ${num}`;
+    });
+
+    this.setState({
+      message: results,
+    });
+  }
+  
   render(){
     return (
       <div>
@@ -35,9 +39,8 @@ class App extends Component {
           <h3>Enter numbers seperated with a comma</h3>
             <input type="text" name="search" onChange={this.searchHandler}></input>
             <button onClick={this.clickHandler}>Run bubble sort</button>
-          </div>
-          <h2>Message: {answer}</h2>
-          
+          </div>        
+          <h2>Results: {this.state.message}</h2>       
         </div >
     );
   }   
